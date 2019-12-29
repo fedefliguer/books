@@ -33,4 +33,13 @@ _[Interpretable Machine Learning: A Guide for Making Black Box Models Explainabl
 * Un modelo es lineal si la asociación entre features y target se modela linealmente.
 * Un modelo con restricciones de monotonicidad asegura que la relación entre una característica y el resultado objetivo siempre vaya en la misma dirección en todo el rango de la feature: un aumento en el valor de la característica siempre conduce a un aumento o siempre a una disminución en el objetivo 
 * Algunos modelos pueden incluir automáticamente interacciones entre características para predecir el resultado objetivo.
-<p align="center"> <img src="https://github.com/fjf-arg/books/blob/master/images/3.1.png"> </p> 
+<p align="center"> <img src="https://github.com/fjf-arg/books/blob/master/images/3.1.png"> </p>
+
+### 1. Regresión lineal
+En este modelo, el resultado previsto de una instancia es una suma ponderada de sus características p. Las betas (β) representan los pesos o coeficientes de las características aprendidas. El primer peso en la suma (β0) se llama intercepción y no se multiplica con una característica. El épsilon (ϵ) es el error que cometemos, la diferencia entre la predicción y el resultado real. Se supone que estos errores siguen una distribución gaussiana centrada en torno al 0, lo que significa que cometemos muchos errores en direcciones negativas y positivas, muchos pequeños y pocos grandes. Los pesos estimados vienen con intervalos de confianza. Un intervalo de confianza es un rango para la estimación de peso que cubre el peso "verdadero" con una cierta confianza. Si el modelo es el modelo "correcto" depende de si las relaciones en los datos cumplen ciertos supuestos:
+  * Linealidad: La predicción debe ser una combinación lineal de características. Los efectos lineales son fáciles de cuantificar y describir. Son aditivos, por lo que es fácil separar los efectos. 
+  * Normalidad: Se supone que la esperanza del target condicionada a los features incluidos en la regresión sigue una distribución normal. Si se viola esta suposición, los intervalos de confianza estimados de los pesos de las características no son válidos.
+Homocedasticidad (varianza constante): Se supone que la varianza del término de error es constante en todo el espacio de features. Esta suposición a menudo se viola en la realidad. 
+  * Independencia: Se supone que cada observación es independiente de cualquier otra. 
+  * Características fijas: Las features de entrada se consideran fijas, lo que implica que están libres de errores de medición. 
+  * Ausencia de multicolinealidad: No desea características fuertemente correlacionadas, porque esto arruina la estimación de los pesos. En una situación en la que dos características están fuertemente correlacionadas, se vuelve problemático estimar los pesos porque los efectos de la característica son aditivos y se vuelve indeterminable a cuál de las características correlacionadas atribuir los efectos
