@@ -33,4 +33,4 @@ _[Interpretable Machine Learning: A Guide for Making Black Box Models Explainabl
 * Un modelo es lineal si la asociación entre features y target se modela linealmente.
 * Un modelo con restricciones de monotonicidad asegura que la relación entre una característica y el resultado objetivo siempre vaya en la misma dirección en todo el rango de la feature: un aumento en el valor de la característica siempre conduce a un aumento o siempre a una disminución en el objetivo 
 * Algunos modelos pueden incluir automáticamente interacciones entre características para predecir el resultado objetivo.
-<img src="https://github.com/fjf-arg/books/blob/master/images/3.1.png">
+<img align="center" src="https://github.com/fjf-arg/books/blob/master/images/3.1.png">
