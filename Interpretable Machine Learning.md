@@ -8,7 +8,6 @@ _[Interpretable Machine Learning: A Guide for Making Black Box Models Explainabl
   1. Recoger datos pasados con el target.
   2. Llevar esos datos a un algoritmo ML.
   3. Integrar el resultado de ese algoritmo a un producto o proceso.
-$$\sum_x=1^10 x^2$$
 
 ## 2. Interpretabilidad
 
