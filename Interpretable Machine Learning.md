@@ -67,3 +67,8 @@ Muchos de los pros del modelo lineal de regresión aplican también al modelo lo
 La característica por excelencia del modelo de regresión lineal es que la predicción se modela como una suma de características. Además, requiere de supuestos que muchas veces no se cumplen: puede suceder que E(Y|X) no se distribuya normalmente, por ejemplo. Los modelos lineales generalizados (GLMs) y los modelos generalizados aditivos (GAMs) son la solución a esto.
 
 <p align="center"> <img src="https://github.com/fjf-arg/books/blob/master/images/3.4.png"> </p>
+
+Los requisitos del modelo lineal pueden mostrarse como en el lado izquierdo, y sus casos opuestos como en el derecho. El primer caso sería el caso de no normalidad, y se resuelve con GLM. El segundo sería el caso de variables que interactúan, y se soluciona incorporando interacciones manualmente. El último sería el de relaciones no lineales, que se resuelve con GAM.
+
+#### 3.i. Resultados no gaussianos - GLM
+
