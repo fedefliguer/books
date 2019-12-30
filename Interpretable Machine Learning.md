@@ -1,8 +1,4 @@
-_[Interpretable Machine Learning: A Guide for Making Black Box Models Explainable.](https://christophm.github.io/interpretable-ml-book/)_
-
-_[Christoph Molnar](https://christophm.github.io/interpretable-ml-book/)_
-
-
+_[Interpretable Machine Learning: A Guide for Making Black Box Models Explainable. Christoph Molnar](https://christophm.github.io/interpretable-ml-book/)_
 
 ## 1. Introducción
 
