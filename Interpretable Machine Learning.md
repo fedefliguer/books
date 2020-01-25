@@ -171,3 +171,6 @@ Lo que sigue, entonces, es una serie de métodos de interpretación agnósticos 
 ### 7. Sustituto local (LIME)
 * Si para una observación puntual quisiera hacerse el ejercicio de simplificación de un modelo caja negra, podría tomarse esa observación y perturbarse el dataset tomando, para cada caso, la predicción que hace el modelo. Si luego de ello se entrena ese dataset  perturbado en un modelo interpretable cualquiera ponderando por la proximidad a los datos originales, el resultado es un modelo local interpretable.
 * Este método funciona bien con datos tabulares, imágenes o texto: prácticamente con todo.
+
+### 8. Reglas de alcance (Anclas)
+* Estas reglas buscan reducir al mínimo la cantidad de features que, inalterables, generan determinada predicción. La idea es una regla IF-THEN basada en combnaciones de features: se elige una cantidad reducida de features, asegurandose que una modificación en el resto no tenga impacto en el valor predicho.
