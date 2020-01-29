@@ -203,3 +203,11 @@ Lo que sigue, entonces, es una serie de métodos de interpretación agnósticos 
 ### 2. Explicaciones contrafácticas
 * La explicación a través de la confrontación (ejemplos adversarios) es perturbar una observación de forma intencional para que el modelo de aprendizaje automático haga una predicción falsa. Los ejemplos adversarios son ejemplos contrafácticos con el objetivo de engañar al modelo, no interpretarlo.
 * Existen muchas técnicas para **crear ejemplos adversos**. La mayoría de los enfoques sugieren minimizar la distancia entre el ejemplo de confrontación y la instancia a manipular, mientras se cambia la predicción al resultado deseado (de confrontación).
+
+### 3. Prototipos y críticas
+* Más allá de las técnicas de explicación, estas técnicas sirven para ilustrar qué observaciones son 'buenas' y cuáles son complicadas para el modelo. Un **prototipo** es una observación representativa de todos los datos. Una **crítica** es una instancia de datos que no está bien representada por el conjunto de prototipos. Los prototipos y las críticas se pueden usar independientemente de un modelo de aprendizaje automático para describir los datos, pero también se pueden usar para crear un modelo interpretable o para hacer que un modelo de caja negra sea interpretable.
+<p align="center"> <img src="https://github.com/fjf-arg/books/blob/master/images/6.1.jpg" height="600" width="300"> </p>
+
+* Se trata de un modelo bastante libre con un algoritmo fácil de implementar, que en algunos casos es superador a las observaciones aleatorias de una clase. A pesar de esto, se trata de una técnica de la que hay que elegir múltiples parámetros.
+
+
