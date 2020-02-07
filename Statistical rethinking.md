@@ -7,6 +7,8 @@ _[Statistical Rethinking: A Bayesian Course with Examples in R and Stan. Richard
 * El libro cuenta con cuadros 'rethinking' (aluden a conexiones con otros enfoques, proporcionan antecedentes históricos o llaman
 malentendidos comunes) y cuadros 'overthinking' (proporcionan más detalles de explicaciones de código o matemáticas).
 
+``` r
 install.packages(c("rstan","coda","mvtnorm","devtools"))
 library(devtools)
 devtools::install_github("rmcelreath/rethinking")
+```
