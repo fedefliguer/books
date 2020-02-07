@@ -21,4 +21,4 @@ son increíblemente poderosas, cumpliendo diligentemente sus cálculos programad
 * Las estadísticas tienden a ser inflexibles y frágiles. Por inflexible, quiero decir que tienen muy formas limitadas de adaptarse a contextos de investigación únicos. Por frágil, quiero decir que fallan en impredecibles formas cuando se aplica a nuevos contextos. He leído personalmente cientos de usos de la prueba exacta de Fisher en revistas científicas, pero aparte del uso original de Fisher, nunca he visto que se use adecuadamente. Incluso un procedimiento como la regresión lineal ordinaria, que es bastante flexible en muchos sentidos, pudiendo codificar una gran diversidad de hipótesis interesantes, a veces es frágil.
 
 
- <font size="2"> This is my text number 2 </font>
+_Pag 4
