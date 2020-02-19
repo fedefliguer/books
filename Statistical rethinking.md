@@ -36,3 +36,16 @@ son increíblemente poderosas, cumpliendo diligentemente sus cálculos programad
 * En la regresión, las diferencias entre frecuentistas y bayesianos son menores. Más generalmente, los golems bayesianos tratan la "aleatoriedad" como una propiedad de la información, no del mundo. Presumiblemente, si tuviéramos más información, podríamos predecir exactamente todo.
 
  #### 1.3.2. Modelos multinivel
+* En ocasiones, la forma en la que el modelo obtiene el valor de sus parámetros se modeliza también, incrustando un nuevo modelo (el de la forma de obtener los parámetros) en uno viejo: este nuevo modelo tiene múltiples niveles de incertidumbre, y se denomina modelo multinivel. Al igual que el análisis de datos bayesianos, el modelado multinivel no es particularmente nuevo, pero la disponibilidad técnica lo revalorizó en los últimos tiempos.
+* Cuatro razones se imponen para usar este tipo de modelos:
+ 1. Para ajustar las estimaciones para el muestreo repetido. Cuando surge más de una observación del mismo individuo, ubicación u hora, los modelos uni-nivel pueden engañarnos.
+ 2. Si nuestras preguntas de investigación incluyen variación entre individuos u otros grupos dentro de los datos.
+ 3. Para evitar el promedio. Con frecuencia, los académicos pre-promedian algunos datos para construir variables para un análisis de regresión.
+* Se trata, en síntesis, de contextos en los que el investigador reconoce grupos o grupos de mediciones. Ya que cada grupo puede tener una tendencia promedio diferente o responder de manera diferente a cualquier tratamiento, los datos agrupados a menudo se benefician de ser modelados por un golem que espera tal variación. Modelos para datos faltantes (imputación), medición de error, análisis factorial, algunos modelos de series temporales, tipos de regresión espacial y de red, y regresiones filogenéticas.
+
+ #### 1.3.3. Comparación de modelos
+* El análisis de los modelos en forma comparativa tiene que ver con la teoría de la información, o los criterios de información, quizá lo más joven dentro de esta disciplina. 
+* El criterio de información de Akaike (AIC), por ejemplo, es una medida de la calidad relativa de un modelo estadístico para un conjunto dado de datos. El AIC es una medida de la calidad de los modelos, en la medida que maneja un trade-off entre la bondad de ajuste del modelo y la complejidad del modelo.
+* Se basa en la entropía de información: se ofrece una estimación relativa de la información perdida cuando se utiliza un modelo determinado para representar el proceso que genera los datos. No proporciona una prueba de un modelo en el sentido de probar una hipótesis nula, es decir AIC no puede decir nada acerca de la calidad del modelo en un sentido absoluto. Si todos los modelos candidatos encajan mal, AIC no dará ningún aviso de ello.
+
+_Pag 19
