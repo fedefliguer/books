@@ -50,6 +50,8 @@ son increíblemente poderosas, cumpliendo diligentemente sus cálculos programad
 
 ## 2. MUNDOS CHICOS Y MUNDOS GRANDES: *teoría de la probabilidad*
 
-* :gem: A diferencia de Cristobal Colón que pensó que el mundo, de acuerdo a sus conocimientos, era mucho más chico de lo que realmente era, el desafío estadístico principal es tratar de que la navegación entre el mundo de lo que se conoce al realizar el modelo al mundo de lo que aún no se conoce, sea lo más tranquila posible. Asumiendo que el mundo pequeño es una descripción precisa del mundo real, los modelos bayesianos son los mejores. Sin embargo, la efectividad del modelo es jústamente su capacidad de predicción en el mundo grande, el exterior: a diferencia del pequeño, la efectividad en el mundo grande tiene que demostrarse en lugar de deducirse lógicamente. Este capítulo, que explica la teoría de la probabilidad en su esencia, se centra en el mundo pequeño. Es la base para el próximo en el que se verá el mundo grande.
+* :gem: A diferencia de Cristobal Colón que pensó que el mundo, de acuerdo a sus conocimientos, era mucho más chico de lo que realmente era, el desafío estadístico principal es tratar de que la navegación entre el mundo de lo que se conoce al realizar el modelo al mundo de lo que aún no se conoce, sea lo más tranquila posible. 
+* Asumiendo que el mundo pequeño es una descripción precisa del mundo real, los modelos bayesianos son los mejores. Sin embargo, la efectividad del modelo es jústamente su capacidad de predicción en el mundo grande, el exterior: a diferencia del pequeño, la efectividad en el mundo grande tiene que demostrarse en lugar de deducirse lógicamente. 
+* Este capítulo, que explica la teoría de la probabilidad en su esencia, se centra en el mundo pequeño. Es la base para el próximo en el que se verá el mundo grande.
 
 _Pag 20
