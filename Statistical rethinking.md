@@ -48,4 +48,8 @@ son increíblemente poderosas, cumpliendo diligentemente sus cálculos programad
 * El criterio de información de Akaike (AIC), por ejemplo, es una medida de la calidad relativa de un modelo estadístico para un conjunto dado de datos. El AIC es una medida de la calidad de los modelos, en la medida que maneja un trade-off entre la bondad de ajuste del modelo y la complejidad del modelo.
 * Se basa en la entropía de información: se ofrece una estimación relativa de la información perdida cuando se utiliza un modelo determinado para representar el proceso que genera los datos. No proporciona una prueba de un modelo en el sentido de probar una hipótesis nula, es decir AIC no puede decir nada acerca de la calidad del modelo en un sentido absoluto. Si todos los modelos candidatos encajan mal, AIC no dará ningún aviso de ello.
 
-_Pag 19
+## 2. MUNDOS CHICOS Y MUNDOS GRANDES: *teoría de la probabilidad*
+
+* :gem: A diferencia de Cristobal Colón que pensó que el mundo, de acuerdo a sus conocimientos, era mucho más chico de lo que realmente era, el desafío estadístico principal es tratar de que la navegación entre el mundo de lo que se conoce al realizar el modelo al mundo de lo que aún no se conoce, sea lo más tranquila posible. Asumiendo que el mundo pequeño es una descripción precisa del mundo real, los modelos bayesianos son los mejores. Sin embargo, la efectividad del modelo es jústamente su capacidad de predicción en el mundo grande, el exterior: a diferencia del pequeño, la efectividad en el mundo grande tiene que demostrarse en lugar de deducirse lógicamente. Este capítulo, que explica la teoría de la probabilidad en su esencia, se centra en el mundo pequeño. Es la base para el próximo en el que se verá el mundo grande.
+
+_Pag 20
