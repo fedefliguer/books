@@ -54,4 +54,11 @@ son increíblemente poderosas, cumpliendo diligentemente sus cálculos programad
 * Asumiendo que el mundo pequeño es una descripción precisa del mundo real, los modelos bayesianos son los mejores. Sin embargo, la efectividad del modelo es jústamente su capacidad de predicción en el mundo grande, el exterior: a diferencia del pequeño, la efectividad en el mundo grande tiene que demostrarse en lugar de deducirse lógicamente. 
 * Este capítulo, que explica la teoría de la probabilidad en su esencia, se centra en el mundo pequeño. Es la base para el próximo en el que se verá el mundo grande.
 
+### 2.1. El jardín de los datos que se bifurcan
+
+* La inferencia bayesiana es realmente solo contar y comparar posibilidades. :gem: Como en el cuento de Borges, para hacer una buena inferencia sobre lo que realmente sucedió, es útil considerar todo lo que podría haber sucedido. Veamos los elementos centrales del enfoque bayesiano:
+1. El método de 'contar posibilidades' es, básicamente, dada una posibilidad observada (con reposición, de cinco bolas blancas y azules observamos ABA), cuantas chances hay de cada opción (AAAA tiene 0 chances, BBBB también, ABBB, AABB, AAAB tienen respectivamente tres (3 * 1 * 1), ocho (2 * 2 * 2) y nueve (3 * 1 * 3)). Este método bayesiano es el más fácil de explicar, pero durante un tiempo se lo criticó por dificil de aplicar.
+2. La actualización de la probabilidad, implica que por ejemplo si se obtiene una nueva observación A, cada una se multiplica y las nuevas probabilidades serán 3, 16 y 27. Este enfoque actualiza la probabilidad con la información, cosa que en este caso es de la misma naturaleza (una nueva observación) pero podría ser de otra, como información sobre la bolsa. Esta idea de actualización a partir de la información, usada a la inversa, habla de una 'ignorancia original' en las probabilidades, que hace que muchas veces en ausencia de información se considere que todo es igualmente probable.
+* La idea transversal de la ignorancia bayesiana es clara: cuando no sabemos qué causó lo que vemos, las opciones que podrían producir lo que vemos de más formas posibles son las más plausibles. La posibilidad no se mide en chances absolutas sino en relativas al total, es decir, en forma de probabilidad.
+
 _Pag 20
