@@ -61,4 +61,13 @@ son increíblemente poderosas, cumpliendo diligentemente sus cálculos programad
 2. La actualización de la probabilidad, implica que por ejemplo si se obtiene una nueva observación A, cada una se multiplica y las nuevas probabilidades serán 3, 16 y 27. Este enfoque actualiza la probabilidad con la información, cosa que en este caso es de la misma naturaleza (una nueva observación) pero podría ser de otra, como información sobre la bolsa. Esta idea de actualización a partir de la información, usada a la inversa, habla de una 'ignorancia original' en las probabilidades, que hace que muchas veces en ausencia de información se considere que todo es igualmente probable.
 * La idea transversal de la ignorancia bayesiana es clara: cuando no sabemos qué causó lo que vemos, las opciones que podrían producir lo que vemos de más formas posibles son las más plausibles. La posibilidad no se mide en chances absolutas sino en relativas al total, es decir, en forma de probabilidad.
 
+### 2.2. Construyendo un modelo
+
+* La inferencia bayesiana, entonces, trabaja con probabilidades en lugar de recuentos sin procesar, por lo que se hace más fácil pero se ve más dificil. Pensemos en el ejemplo: una muestra de parcelas del planeta, buscando encontrar la proporción tierra/agua, da 6 parcelas de agua y 3 de tierra. Diseñar un modelo bayesiano simple es un proceso compuesto por tres pasos:
+1. El análisis de datos bayesianos generalmente necesita producir una historia sobre cómo los datos llegaron a ser. Puede ser descriptiva, especificando asociaciones que pueden usarse para predecir resultados, dadas observaciones. O puede ser causal, una teoría de cómo algunos eventos producen otros eventos. En este caso, la historia es que existe una proporción real p de agua en el planeta, que cada parcela aleatoria tiene una probabilidad p de ser agua y 1-p de ser tierra, y que cada parcela es independiente de la otra.
+2. El segundo paso es la actualización de esas probabilidades p desconocidas. Programemos nuestra máquina bayesiana para asignar inicialmente la misma plausibilidad para cada proporción de agua, cada valor de p. La ignorancia total es de una p igual a 1-p, o sea 0.5, y cada parcela nueva va actualizando las probabilidades de la siguiente manera:
+<p align="center"> <img src="https://github.com/fedefliguer/books/blob/master/SR-images/2.1.png"> </p>
+
+3. La 
+
 _Pag 28
