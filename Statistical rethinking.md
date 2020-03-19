@@ -84,7 +84,13 @@ dbinom(6, size=9, prob=0.5)
 * Un modelo bayesiano trata las estimaciones como una consecuencia puramente lógica de esos supuestos. Para cada combinación única de datos, probabilidad, parámetros, y prior, hay un conjunto único de estimaciones. La plausibilidad relativa de los diferentes valores de parámetros condicionales a los datos se conocen como distribución posterior. La fórmula del posterior surge de la idea de Bayes, de que ya que ```Pr(w,p) = Pr(w|p) * Pr(p)``` y que ```Pr(w,p) = Pr(p|w) * Pr(w)``` entonces sucederá que ```Pr(p|w) = Pr(w|p) * Pr(p) / Pr(w)```, que implica ```Posterior = Verosimilitud * Prior / Verosimilitud``` en promedio. Este último término se ocupa de 'estandarizar' el posterior, para que sea una probabilidad y siempre esté entre 0 y 1.
 
 
- Ejemplo: Buscamos conocer que proporción de los estudiantes siguen esta recomendación de 2500Kcal o más, para ello tomaremos una muestra aleatoria de estudiantes. ```$\theta$``` es la proporción que ingieren en un día 2500 kcal o más, que es desconocido, y desde el punto de vista bayesiano cuando tenemos incertidumbre de algo (puede ser un parámetro o una predicción) lo vemos como una variable aleatoria con una distribución de probabilidad que actualizaremos conforme obtenemos información (observamos datos). La distribución ```$p(\theta)$``` $\alpha$ se conoce como la distribución a priori y representa nuestras creencias de los posibles valores que puede tomar el parámetro. Podría ser, por ejemplo
+ Ejemplo: Buscamos conocer que proporción de los estudiantes siguen esta recomendación de 2500Kcal o más, para ello tomaremos una muestra aleatoria de estudiantes. 
+ 
+ $\theta$ es
+ $$\theta$$ es
+ 
+ 
+ ```$\theta$``` es la proporción que ingieren en un día 2500 kcal o más, que es desconocido, y desde el punto de vista bayesiano cuando tenemos incertidumbre de algo (puede ser un parámetro o una predicción) lo vemos como una variable aleatoria con una distribución de probabilidad que actualizaremos conforme obtenemos información (observamos datos). La distribución ```$p(\theta)$``` $\alpha$ se conoce como la distribución a priori y representa nuestras creencias de los posibles valores que puede tomar el parámetro. Podría ser, por ejemplo
 ```
 theta <- c(0.05, 0.15, 0.25, 0.35, 0.45, 0.55, 0.65, 0.75, 0.85 0.95)
 pesos.prior <- c(1, 5.2, 8, 7.2, 4.6, 2.1, 0.7, 0.1, 0, 0)
