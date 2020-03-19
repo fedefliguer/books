@@ -85,12 +85,12 @@ dbinom(6, size=9, prob=0.5)
 * Ejemplo: Buscamos conocer que proporción de los estudiantes siguen esta recomendación de 2500Kcal o más, para ello tomaremos una muestra aleatoria de estudiantes. ![$\theta$](https://render.githubusercontent.com/render/math?math=%24%5Ctheta%24)
 es la proporción que ingieren en un día 2500 kcal o más, que es desconocido, y desde el punto de vista bayesiano cuando tenemos incertidumbre de algo (puede ser un parámetro o una predicción) lo vemos como una variable aleatoria con una distribución de probabilidad que actualizaremos conforme obtenemos información (observamos datos). La distribución ![$p(\theta)$](https://render.githubusercontent.com/render/math?math=%24p(%5Ctheta)%24)
  se conoce como la distribución a priori y representa nuestras creencias de los posibles valores que puede tomar el parámetro. Podría ser, por ejemplo
-```
+```r
 theta <- c(0.05, 0.15, 0.25, 0.35, 0.45, 0.55, 0.65, 0.75, 0.85 0.95)
 pesos.prior <- c(1, 5.2, 8, 7.2, 4.6, 2.1, 0.7, 0.1, 0, 0)
 ```
 Esa distribución prior se multiplica por la verosimilitud, que en este caso sería bernoulli. Si uno observa 30 estudiantes donde 11 cumplen la condición, la fórmula es ![$\mathcal{L}(\theta) = \theta^{11}(1-\theta)^{19}$](https://render.githubusercontent.com/render/math?math=%24%5Cmathcal%7BL%7D(%5Ctheta)%20%3D%20%5Ctheta%5E%7Bz%7D(1-%5Ctheta)%5E%7BN-z%7D%24), y la actualización devuelve un resultado así:
-<p align="center"> <img src="https://github.com/fedefliguer/books/blob/master/SR-images/2.2.png"> </p>.
+<p align="center"> <img src="https://github.com/fedefliguer/books/blob/master/SR-images/2-2.png"> </p>.
 
 * La lección clave es que el posterior es proporcional al producto del prior y la probabilidad. ¿Por qué? Debido a que el número de caminos en el jardín es el producto de la cantidad anterior de rutas y la nueva cantidad de rutas. La probabilidad indica el número de caminos, y el prior indica el número prior. La multiplicación es solo recuento comprimido. La probabilidad promedio en la parte inferior simplemente estandariza los recuentos, para que sumen uno. Una aclaración importante es que el uso del teorema de bayes no es exclusivo del análisis bayesiano: lo que sí es exclusivo es su uso para cuantificar la incertidumbre sobre entidades teóricas que no se pueden observar, como parámetros y modelos.
 
@@ -98,7 +98,7 @@ Esa distribución prior se multiplica por la verosimilitud, que en este caso ser
 
 * Se puede pensar la acción del modelo como condicionar el priar sobre los datos. Se necesitan varias técnicas numéricas para aproximar las matemáticas que se derivan de la definición del teorema de Bayes. En este libro se verán tres:
 1. Si bien la mayoría de los parámetros son continuos, capaces de asumir un número infinito de valores, resulta que podemos lograr una excelente aproximación de la distribución posterior considerando solo una cuadrícula finita de valores de parámetros. El procedimiento se llama aproximación de cuadrícula y consta de definir una cuadrícula, y actualizar pensando en prior * probability. Puede replicarse de la siguiente forma:
-```
+```r
 # Definir cuadrícula
 p_grid <- seq( from=0 , to=1 , length.out=20 )
 # Definir priors
@@ -113,7 +113,7 @@ posterior <- unstd.posterior / sum(unstd.posterior)
 plot(p_grid,posterior,type="b",xlab="probability of water",ylab="posterior probability")
 ```
 2. La estrategia de aproximación de cuadrícula se escala muy mal con la complejidad del modelo, ya que en estos días son comunes los modelos con cientos o miles de parámetros, y con la cuadrícula escalan exponencialmente. Un enfoque útil es la aproximación cuadrática. En condiciones bastante generales, la región cerca del pico de la distribución posterior será casi gaussiana o "normal". Una aproximación gaussiana se llama "aproximación cuadrática" porque el logaritmo de una distribución gaussiana forma una parábola. Y una parábola es una función cuadrática. La aproximación cuadrática representa esencialmente cualquier log-posterior con una parábola. Lo que se necesita, entonces, es encontrar el 'pico' del posterior y luego estimar la curvatura cerca de él.
-```
+```r
 library(rethinking)
 globe.qa <- map(
 alist(
