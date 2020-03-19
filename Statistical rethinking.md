@@ -83,3 +83,45 @@ dbinom(6, size=9, prob=0.5)
 * Para cada parámetro que desee que calcule su máquina bayesiana, debe proporcionar a la máquina un prior. Una máquina bayesiana debe tener una asignación de plausibilidad inicial para cada posible valor del parámetro. Los priors son distribuciones de probabilidad del parámetro, y enfatizan el caracter 'subjetivo' de estos modelos.
 * Un modelo bayesiano trata las estimaciones como una consecuencia puramente lógica de esos supuestos. Para cada combinación única de datos, probabilidad, parámetros, y prior, hay un conjunto único de estimaciones. La plausibilidad relativa de los diferentes valores de parámetros condicionales a los datos se conocen como distribución posterior. La fórmula del posterior surge de la idea de Bayes, de que ya que ```Pr(w,p) = Pr(w|p) * Pr(p)``` y que ```Pr(w,p) = Pr(p|w) * Pr(w)``` entonces sucederá que ```Pr(p|w) = Pr(w|p) * Pr(p) / Pr(w)```, que implica ```Posterior = Verosimilitud * Prior / Verosimilitud``` en promedio. Este último término se ocupa de 'estandarizar' el posterior, para que sea una probabilidad y siempre esté entre 0 y 1.
 * La lección clave es que el posterior es proporcional al producto del prior y la probabilidad. ¿Por qué? Debido a que el número de caminos en el jardín es el producto de la cantidad anterior de rutas y la nueva cantidad de rutas. La probabilidad indica el número de caminos, y el prior indica el número prior. La multiplicación es solo recuento comprimido. La probabilidad promedio en la parte inferior simplemente estandariza los recuentos, para que sumen uno. Una aclaración importante es que el uso del teorema de bayes no es exclusivo del análisis bayesiano: lo que sí es exclusivo es su uso para cuantificar la incertidumbre sobre entidades teóricas que no se pueden observar, como parámetros y modelos.
+
+### 2.4. Haciendo al modelo andar
+
+* Se puede pensar la acción del modelo como condicionar el priar sobre los datos. Se necesitan varias técnicas numéricas para aproximar las matemáticas que se derivan de la definición del teorema de Bayes. En este libro se verán tres:
+1. Si bien la mayoría de los parámetros son continuos, capaces de asumir un número infinito de valores, resulta que podemos lograr una excelente aproximación de la distribución posterior considerando solo una cuadrícula finita de valores de parámetros. El procedimiento se llama aproximación de cuadrícula y consta de definir una cuadrícula, y actualizar pensando en prior * probability. Puede replicarse de la siguiente forma:
+```
+# Definir cuadrícula
+p_grid <- seq( from=0 , to=1 , length.out=20 )
+# Definir priors
+prior <- rep( 1 , 20 ) # otros ejemplos de prior: prior <- ifelse( p_grid < 0.5 , 0 , 1 ); prior <- exp( -5*abs( p_grid - 0.5 ) )
+# Definir probabilidad de cada valor en la cuadrícula
+likelihood <- dbinom( 6 , size=9 , prob=p_grid )
+# Calcular posterior
+unstd.posterior <- likelihood * prior
+# Estandarizar el posterior
+posterior <- unstd.posterior / sum(unstd.posterior)
+
+plot(p_grid,posterior,type="b",xlab="probability of water",ylab="posterior probability")
+```
+2. La estrategia de aproximación de cuadrícula se escala muy mal con la complejidad del modelo, ya que en estos días son comunes los modelos con cientos o miles de parámetros, y con la cuadrícula escalan exponencialmente. Un enfoque útil es la aproximación cuadrática. En condiciones bastante generales, la región cerca del pico de la distribución posterior será casi gaussiana o "normal". Una aproximación gaussiana se llama "aproximación cuadrática" porque el logaritmo de una distribución gaussiana forma una parábola. Y una parábola es una función cuadrática. La aproximación cuadrática representa esencialmente cualquier log-posterior con una parábola. Lo que se necesita, entonces, es encontrar el 'pico' del posterior y luego estimar la curvatura cerca de él.
+```
+library(rethinking)
+globe.qa <- map(
+alist(
+w ~ dbinom(9,p) , # binomial likelihood
+p ~ dunif(0,1) # uniform prior
+) ,
+data=list(w=6) )
+# display summary of quadratic approximation
+precis(globe.qa)
+
+Mean StdDev 5.5% 94.5%
+p 0.67 0.16 0.42 0.92
+```
+Al igual que en el caso anterior, la precisión aumenta cuando la cantidad de datos también lo hace. La aproximación cuadrática generalmente es equivalente a una estimación de máxima verosimilitud (MLE).
+3. En ocasiones, la distribución del posterior no puede calcularse en forma única sino que debe hacerlo de a partes, lo cual quita poder a la aproximación cuadrática. Como resultado surgieron modelos más complejos como el de las cadenas de Markov Monte Carlo (MCMC), que en lugar de intentar aproximar la distribución posterior directamente, toma muestras de la parte posterior y a partir de esa colección de valores de parámetros y frecuencias de esos valores en el posterior, realizan un histograma y construyen la distribución del posterior.
+
+### 2.5. Resumen
+* El objetivo de la inferencia bayesiana es la distribución de probabilidad posterior, que es el número relativo de formas en que cada causa conjeturada de los datos podría haber producido los datos, valor que se actualiza cuando más datos se conocen.
+* Más mecánicamente, un modelo bayesiano es una combinación de probabilidad, una elección de parámetros, y un prior. La probabilidad proporciona la plausibilidad de una observación (datos), dado un valor fijo para los parámetros. El prior proporciona la plausibilidad de cada valor posible de los parámetros, antes de contabilizar los datos.
+* En la práctica, los modelos bayesianos se ajustan a los datos mediante técnicas numéricas, como la aproximación a la cuadrícula, la
+aproximación cuadrática, y las cadenas de Markov de Monte Carlo. Cada método tiene distintos trade-offs.
