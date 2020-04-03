@@ -12,3 +12,10 @@ install.packages(c("rstan","coda","mvtnorm","devtools"))
 library(devtools)
 devtools::install_github("rmcelreath/rethinking")
 ```
+O, también
+
+``` r
+install.packages(c("mvtnorm","loo","coda"), repos="https://cloud.r-project.org/",dependencies=TRUE)
+options(repos=c(getOption('repos'), rethinking='http://xcelab.net/R'))
+install.packages('rethinking',type='source')
+```
