@@ -1,0 +1,29 @@
+## 6. EL DAG EMBRUJADO Y EL TERROR CAUSAL
+
+* La regresión múltiple es peligrosa. Imaginemos que en un panel de revisión de artículos periodísticos se reciben 200 propuestas. Cada una tiene su confiabilidad (rigor, erudición, plausibilidad de éxito) y su noticiabilidad (valor de bienestar social, interés público). Se clasifican las propuestas por sus puntajes combinados, y se selecciona el 10% superior para fondos. Entre ese mejor 10% se traza una línea de regresión, que puede mostrar una relación negativa. Y esto por qué sucede? Pues porque si la única forma de cruzar el umbral es obtener una puntuación alta, es más probable obtener una puntuación alta en un ítem que en los dos. La conclusión sería que los estudios más confiables son menos interesantes, pero es lo que se conoce como distorsión de selcción, o paradoja de Berkson. Este efecto puede ocurrir dentro de una regresión múltiple, porque el acto de agregar un predictor induce una selección estadística dentro del modelo, un fenómeno que se conoce con el nombre de sesgo del colisionador. Este capítulo explorará tres peligros distintos: la multicolinealidad, el sesgo posterior al tratamiento y el sesgo del colisionador.
+
+### 6.1. Multicolinealidad
+
+* La multicolinealidad significa una correlación muy fuerte entre dos o más variables predictoras. La consecuencia de esto es que la distribución posterior parecerá sugerir que ninguna de las variables está asociada de manera confiable con el resultado, incluso si todas las variables están en realidad fuertemente asociadas.
+* Por ejemplo, buscaremos predecir la altura de un individuo utilizando la longitud de sus piernas como variables predictoras. Seguramente la altura se asocia positivamente con la longitud de la pierna, o al menos la simulación asumirá que lo es. Sin embargo, una vez que pones ambos longitudes de las piernas en el modelo, sucederá algo molesto.
+```r
+m6.1 <- quap(
+alist(
+height ~ dnorm( mu , sigma ) ,
+mu <- a + bl*leg_left + br*leg_right ,
+a ~ dnorm( 10 , 100 ) ,
+bl ~ dnorm( 2 , 10 ) ,
+br ~ dnorm( 2 , 10 ) ,
+sigma ~ dexp( 1 )
+) ,
+data=d )
+precis(m6.1)
+
+mean sd 5.5% 94.5%
+a 0.98 0.28 0.53 1.44
+bl 0.21 2.53 -3.83 4.25
+br 1.78 2.53 -2.26 5.83
+sigma 0.62 0.04 0.55 0.69
+```
+* Si ambas piernas tienen longitudes casi idénticas, y la altura está tan fuertemente asociada con la longitud de la pierna, entonces ¿qué es esta distribución posterior tan extraña? ¿Funcionó correctamente la aproximación posterior? Funcionó correctamente, y la distribución posterior aquí es la respuesta correcta a la pregunta que hicimos. El problema es la pregunta. Recuerda que una regresión lineal múltiple responde la pregunta: ¿Cuál es el valor de conocer cada predictor, después de conocer ya todos los otros predictores? En este caso, la pregunta se convierte en: ¿Cuál es el valor de conocer cada longitud de la pierna, después de saber la longitud de la otra pierna? La respuesta a esta extraña pregunta es igualmente extraña, pero perfectamente lógica. Si se ajusta una regresión solo con una de las piernas, el coeficiente será muy cercano a 2, que es la suma de bl + br.
+* El problema de la multicolinealidad es un miembro de una familia de problemas en el ajuste de modelos, llamados problemas de identificación. Cuando un parámetro no es identificable, significa que la estructura de los datos y el modelo no permiten estimar el valor del parámetro. A veces, este problema surge de errores en el código de un modelo, pero muchos tipos importantes de modelos presentan parámetros no identificables o débilmente identificables, incluso cuando el código está bien. La naturaleza no nos debe una inferencia fácil, aun cuando el modelo es correcto. En general, no hay garantía de que los datos disponibles contengan mucha información sobre un parámetro de interés. Cuando eso es cierto, el modelo bayesiano devolverá una distribución del posterior muy similar al prior. Por lo tanto, comparar prior con posterior puede ser una buena idea, una forma de ver cuánta información extrajo el modelo de los datos. Cuando prior y posterior son similares, no significa que los cálculos sean incorrectos: usted obtuve la respuesta correcta a la pregunta que hiciste.
